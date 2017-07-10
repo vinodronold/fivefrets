@@ -12,6 +12,7 @@
   },
   "dependencies": {
     "classnames": "^2.2.5",
+    "material-components-web": "^0.15.0",
     "prop-types": "^15.5.10",
     "react": "^15.6.1",
     "react-dom": "^15.6.1",
@@ -24,8 +25,11 @@
     "youtube-player": "^5.4.0"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
+    "build-css": "node-sass src/app/styles/ -o src/app/styles/ --include-path=node_modules",
+    "watch-css": "npm run build-css && node-sass src/app/styles/ -o src/app/styles/ --include-path=node_modules --watch --recursive",
+    "start-js": "react-scripts start",
+    "start": "npm-run-all -p watch-css start-js",
+    "build": "npm run build-css && react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
   }
