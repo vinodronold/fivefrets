@@ -1,22 +1,10 @@
-// @import '../../_media.scss';
-@import "@material/elevation/mixins";
+
 .chord-list {
-    //     display: grid;
-    //     @media only screen and (max-width: $mobile) {
-    //         grid-template-columns: 1fr;
-    //     }
-    //     @media only screen and (min-width: $mobile) and (max-width: $tablet) {
-    //         grid-template-columns: 1fr 1fr;
-    //     }
-    //     @media only screen and (min-width: $tablet) {
-    //         grid-template-columns: 1fr 1fr 1fr;
-    //     }
-    //     grid-gap: 1rem;
     .chord-list-item {
         @include mdc-elevation(2);
         height: auto!important;
         padding: 1rem;
-    margin: 1rem;
+        margin: 1rem;
         cursor: pointer;
         &:hover {
             @include mdc-elevation(8);

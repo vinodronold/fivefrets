@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React from 'react'
 // import { Redirect } from 'react-router'
 import cx from 'classnames'
 import Button from '../Button'
@@ -7,6 +7,8 @@ import YTPlayer from '../YTPlayer'
 import Loader from '../Loader'
 import { Headline, SubHeading1 } from '../Typography'
 import { PLAYER_STATUS } from '../../constants'
+
+const IsPlaying = status => status === PLAYER_STATUS.PLAYING
 
 const DisplayTitle = ({ title = '', subtitle = '' }) =>
   <div style={{ margin: '1rem', textAlign: 'center' }}>
@@ -24,11 +26,11 @@ const DisplayControl = ({ status, PlayerStatusChanged }) =>
       primary
       compact
       onClick={
-        status === PLAYER_STATUS.PLAYING
+        IsPlaying(status)
           ? () => PlayerStatusChanged(PLAYER_STATUS.PAUSED)
           : () => PlayerStatusChanged(PLAYER_STATUS.PLAYING)
       }>
-      {status === PLAYER_STATUS.PLAYING ? 'PAUSE' : 'PLAY'}
+      {IsPlaying(status) ? 'PAUSE' : 'PLAY'}
     </Button>
     <Button primary compact onClick={() => PlayerStatusChanged(PLAYER_STATUS.ENDED)}>
       STOP
@@ -40,20 +42,29 @@ const DisplayChord = ({ c, pulse = false, active = false }) =>
     {c}
   </Paper>
 
-class PlayerLayout extends Component {
-  render() {
-    const { song, match, player, PlayerStatusChanged } = this.props
-    return player.ytid
-      ? <div>
-          <DisplayTitle title={song.title} subtitle={song.subtitle} />
-          <DisplayControl status={player.status} PlayerStatusChanged={PlayerStatusChanged} />
-          <div className={'chordscontainer'}>
-            {song.chords.map(c => <DisplayChord key={c.id} {...c} />)}
-          </div>
-          <YTPlayer id={match.params.id} status={player.status} PlayerStatusChanged={PlayerStatusChanged} />
-        </div>
-      : <Loader />
-  }
-}
+const Layout = ({ match, song, player, PlayerStatusChanged, MoveToNextChord }) =>
+  <div>
+    <DisplayTitle title={song.title} subtitle={song.subtitle} />
+    <DisplayControl status={player.status} PlayerStatusChanged={PlayerStatusChanged} />
+    <div className={'chordscontainer'}>
+      {Object.keys(song.chords).map(key =>
+        <DisplayChord
+          key={key}
+          {...song.chords[key]}
+          active={IsPlaying(player.status) && Number(key) === Number(player.activechord)}
+          pulse={!IsPlaying(player.status) && Number(key) === Number(player.activechord)}
+        />
+      )}
+    </div>
+    <YTPlayer
+      id={match.params.id}
+      chords={song.chords}
+      {...player}
+      PlayerStatusChanged={PlayerStatusChanged}
+      MoveToNextChord={MoveToNextChord}
+    />
+  </div>
+
+const PlayerLayout = props => (props.player.ytid ? <Layout {...props} /> : <Loader />)
 
 export default PlayerLayout

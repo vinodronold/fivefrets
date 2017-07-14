@@ -1,5 +1,5 @@
 import InitState from './InitState'
 
-const ChordsReducer = (state = InitState.songs, action) => state
+const SongsReducer = (state = InitState.songs, action) => state
 
-export default ChordsReducer
+export default SongsReducer

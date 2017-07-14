@@ -9,8 +9,28 @@ class YTPlayer extends Component {
     this.status = null
     this.player_events = null
     this.player_id = 'YTPlayer'
+    this.timer = null
   }
-
+  async tick() {
+    let { chords, activechord, MoveToNextChord, PlayerStatusChanged } = this.props
+    let max = Object.keys(chords).length
+    if (activechord < max) {
+      let next = chords[activechord + 1].t
+      let t = await this.player.getCurrentTime()
+      if (t >= next) {
+        MoveToNextChord()
+        if (activechord === max) {
+          PlayerStatusChanged(PLAYER_STATUS.PAUSED)
+        }
+      }
+    }
+  }
+  startTimer() {
+    this.timer = setInterval(this.tick.bind(this), 100)
+  }
+  stopTimer() {
+    clearInterval(this.timer)
+  }
   componentDidMount() {
     const { id, PlayerStatusChanged } = this.props
     this.player = YouTubePlayer(this.player_id, {
@@ -31,13 +51,13 @@ class YTPlayer extends Component {
     this.status = this.props.status
     switch (this.props.status) {
       case PLAYER_STATUS.PAUSED:
-        this.player.pauseVideo()
+        this.player.pauseVideo().then(this.stopTimer.bind(this))
         break
       case PLAYER_STATUS.PLAYING:
-        this.player.playVideo()
+        this.player.playVideo().then(this.startTimer.bind(this))
         break
       case PLAYER_STATUS.ENDED:
-        this.player.stopVideo()
+        this.player.stopVideo().then(this.stopTimer.bind(this))
         break
       default:
     }
