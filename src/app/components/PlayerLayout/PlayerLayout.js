@@ -42,7 +42,7 @@ const DisplayChord = ({ c, pulse = false, active = false }) =>
     {c}
   </Paper>
 
-const Layout = ({ match, song, player, PlayerStatusChanged, MoveToNextChord }) =>
+const Layout = ({ match, song, player, PlayerStatusChanged, MoveChordTo }) =>
   <div>
     <DisplayTitle title={song.title} subtitle={song.subtitle} />
     <DisplayControl status={player.status} PlayerStatusChanged={PlayerStatusChanged} />
@@ -61,7 +61,7 @@ const Layout = ({ match, song, player, PlayerStatusChanged, MoveToNextChord }) =
       chords={song.chords}
       {...player}
       PlayerStatusChanged={PlayerStatusChanged}
-      MoveToNextChord={MoveToNextChord}
+      MoveChordTo={MoveChordTo}
     />
   </div>
 

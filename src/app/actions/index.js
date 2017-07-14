@@ -2,6 +2,6 @@ import ToggleDrawer from './ToggleDrawer'
 import ToggleMoreOptions from './ToggleMoreOptions'
 import PlayerStatusChanged from './PlayerStatusChanged'
 import GetSong  from './GetSong'
-import MoveToNextChord from './MoveToNextChord'
+import MoveChordTo from './MoveChordTo'
 
-export { ToggleDrawer, ToggleMoreOptions, PlayerStatusChanged, GetSong , MoveToNextChord }
+export { ToggleDrawer, ToggleMoreOptions, PlayerStatusChanged, GetSong , MoveChordTo }

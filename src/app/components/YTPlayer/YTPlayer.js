@@ -12,13 +12,13 @@ class YTPlayer extends Component {
     this.timer = null
   }
   async tick() {
-    let { chords, activechord, MoveToNextChord, PlayerStatusChanged } = this.props
+    let { chords, activechord, MoveChordTo, PlayerStatusChanged } = this.props
     let max = Object.keys(chords).length
     if (activechord < max) {
       let next = chords[activechord + 1].t
       let t = await this.player.getCurrentTime()
       if (t >= next) {
-        MoveToNextChord()
+        MoveChordTo(activechord + 1)
         if (activechord === max) {
           PlayerStatusChanged(PLAYER_STATUS.PAUSED)
         }
@@ -57,7 +57,11 @@ class YTPlayer extends Component {
         this.player.playVideo().then(this.startTimer.bind(this))
         break
       case PLAYER_STATUS.ENDED:
-        this.player.stopVideo().then(this.stopTimer.bind(this))
+        this.player.stopVideo().then(() => {
+          this.stopTimer.bind(this)
+          this.props.MoveChordTo(1)
+          console.log('stopped.! THIS IS NOT WORKING')
+        })
         break
       default:
     }
