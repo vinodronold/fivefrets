@@ -1,6 +1,6 @@
 import PlayerLayout from '../components/PlayerLayout'
 import { SelectedSong } from '../selectors'
-import { PlayerStatusChanged, MoveToNextChord } from '../actions'
+import { PlayerStatusChanged, GetSong, MoveToNextChord } from '../actions'
 import { withRouter } from 'react-router-dom'
 import { connect } from 'react-redux'
 
@@ -13,6 +13,7 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
   return {
     PlayerStatusChanged: status => dispatch(PlayerStatusChanged(status)),
+    GetSong: id => dispatch(GetSong(id)),
     MoveToNextChord: () => dispatch(MoveToNextChord)
   }
 }

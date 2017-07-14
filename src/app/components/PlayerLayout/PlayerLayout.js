@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Component } from 'react'
 // import { Redirect } from 'react-router'
 import cx from 'classnames'
 import Button from '../Button'
@@ -65,6 +65,17 @@ const Layout = ({ match, song, player, PlayerStatusChanged, MoveToNextChord }) =
     />
   </div>
 
-const PlayerLayout = props => (props.player.ytid ? <Layout {...props} /> : <Loader />)
+class PlayerLayout extends Component {
+  componentDidMount() {
+    const { match, player, GetSong } = this.props
+    if (!player.ytid) {
+      GetSong(match.params.id)
+    }
+  }
+
+  render() {
+    return this.props.song ? <Layout {...this.props} /> : <Loader />
+  }
+}
 
 export default PlayerLayout

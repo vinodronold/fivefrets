@@ -28,7 +28,7 @@ class Drawer extends PureComponent {
 
   render() {
     return (
-      <aside className={clsTempDrawer} ref={n => (this.node = n)}>
+      <aside className={clsTempDrawer} ref={n => (this.node = n)} style={{zIndex: 10}}>
         <nav className={`${clsTempDrawer}__drawer`}>
           <header className={`${clsTempDrawer}__header`}>
             <div
