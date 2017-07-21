@@ -58,10 +58,15 @@ const Layout = ({ match, song, player, PlayerStatusChanged, MoveChordTo }) =>
     </div>
     <YTPlayer
       id={match.params.id}
-      chords={song.chords}
       {...player}
       PlayerStatusChanged={PlayerStatusChanged}
       MoveChordTo={MoveChordTo}
+      max={Object.keys(song.chords).length}
+      next={
+        player.activechord + 1 <= Object.keys(song.chords).length
+          ? song.chords[player.activechord + 1].t
+          : song.chords[player.activechord].t
+      }
     />
   </div>
 
