@@ -9,7 +9,7 @@
     "express": "^4.15.3"
   },
   "scripts": {
-    "start": "concurrently \"npm run server\" \"npm run client\"",
+    "start": "concurrently -k -r \"yarn run server\" \"yarn run client\"",
     "server": "node server.js",
     "client": "node start-client.js"
   },
