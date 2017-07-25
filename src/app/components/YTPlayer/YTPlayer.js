@@ -1,9 +1,17 @@
-import React from 'react'
+import React, { Component } from 'react'
 
-const YTPlayer = () =>
-  <div>
-    <div className="YTClearSpace" />
-    <div className="YTPlayer" id="YTPlayer" />
-  </div>
-
+class YTPlayer extends Component {
+  constructor() {
+    super()
+    this.PlayerID = 'YTPlayer'
+  }
+  componentDidMount = () => this.props.MountYTPlayer(this.PlayerID, this.props.ytid)
+  componentDidUnMount = () => this.props.UnMountYTPlayer(this.PlayerID)
+  
+  render = () =>
+    <div>
+      <div className="YTClearSpace" />
+      <div className="YTPlayer" id={this.PlayerID} />
+    </div>
+}
 export default YTPlayer

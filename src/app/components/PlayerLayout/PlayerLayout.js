@@ -42,7 +42,7 @@ const DisplayChord = ({ c, pulse = false, active = false }) =>
     {c}
   </Paper>
 
-const Layout = ({ match, song, player, PlayerStatusChanged, MoveChordTo }) =>
+const Layout = ({ match, song, player, PlayerStatusChanged, MoveChordTo, MountYTPlayer, UnMountYTPlayer }) =>
   <div>
     <DisplayTitle title={song.title} subtitle={song.subtitle} />
     <DisplayControl status={player.status} PlayerStatusChanged={PlayerStatusChanged} />
@@ -56,18 +56,7 @@ const Layout = ({ match, song, player, PlayerStatusChanged, MoveChordTo }) =>
         />
       )}
     </div>
-    <YTPlayer
-      id={match.params.id}
-      {...player}
-      PlayerStatusChanged={PlayerStatusChanged}
-      MoveChordTo={MoveChordTo}
-      max={Object.keys(song.chords).length}
-      next={
-        player.activechord + 1 <= Object.keys(song.chords).length
-          ? song.chords[player.activechord + 1].t
-          : song.chords[player.activechord].t
-      }
-    />
+    <YTPlayer MountYTPlayer={MountYTPlayer} UnMountYTPlayer={UnMountYTPlayer} ytid={player.ytid} />
   </div>
 
 class PlayerLayout extends Component {

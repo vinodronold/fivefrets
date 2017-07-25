@@ -13,6 +13,7 @@ export default {
     ]
   },
   player: {
+    id:'',
     status: -1,
     activechord: 1,
     ytid: ''
