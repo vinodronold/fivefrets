@@ -2,12 +2,15 @@
 
 # dependencies
 /node_modules
+/client/node_modules
 
 # testing
 /coverage
+/client/coverage
 
 # production
 /build
+/client/build
 
 # misc
 .DS_Store
@@ -21,4 +24,4 @@ yarn-debug.log*
 yarn-error.log*
 
 # Build CSS
-src/**/*.css
+client/src/**/*.css
