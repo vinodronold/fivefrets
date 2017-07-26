@@ -3,14 +3,15 @@
   "version": "0.1.0",
   "private": true,
   "devDependencies": {
-    "concurrently": "3.5.0"
+    "concurrently": "3.5.0",
+    "nodemon": "^1.11.0"
   },
   "dependencies": {
     "express": "^4.15.3"
   },
   "scripts": {
     "start": "concurrently -k -r \"yarn run server\" \"yarn run client\"",
-    "server": "node server.js",
+    "server": "nodemon server.js",
     "client": "node start-client.js"
   },
   "repository": "https://github.com/vinodronold/fivefrets.git",
