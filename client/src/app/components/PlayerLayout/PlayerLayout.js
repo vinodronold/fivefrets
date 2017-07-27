@@ -3,7 +3,7 @@ import React, { Component } from 'react'
 import cx from 'classnames'
 import Button from '../Button'
 import Paper from '../Paper'
-import YTPlayer from '../YTPlayer'
+// import YTPlayer from '../YTPlayer'
 import Loader from '../Loader'
 import { Headline, SubHeading1 } from '../Typography'
 import { PLAYER_STATUS } from '../../constants'
@@ -19,9 +19,33 @@ const DisplayTitle = ({ title = '', subtitle = '' }) =>
       {subtitle}
     </SubHeading1>
   </div>
+const DisplayTranspose = ({ transpose = 0, SetTranspose }) =>
+  <span>
+    <Button
+      primary
+      compact
+      style={{ color: 'black' }}
+      onClick={() => {
+        SetTranspose(-1)
+      }}>
+      -
+    </Button>
+    <Button disabled style={{ color: 'black' }}>
+      TRANSPOSE {transpose}
+    </Button>
+    <Button
+      primary
+      compact
+      style={{ color: 'black' }}
+      onClick={() => {
+        SetTranspose(1)
+      }}>
+      +
+    </Button>
+  </span>
 
-const DisplayControl = ({ status, PlayerStatusChanged }) =>
-  <div style={{ textAlign: 'center' }}>
+const DisplayControl = ({ status, PlayerStatusChanged, transpose, SetTranspose }) =>
+  <div className="player-control">
     <Button
       primary
       compact
@@ -35,6 +59,7 @@ const DisplayControl = ({ status, PlayerStatusChanged }) =>
     <Button primary compact onClick={() => PlayerStatusChanged(PLAYER_STATUS.ENDED)}>
       STOP
     </Button>
+    <DisplayTranspose transpose={transpose} SetTranspose={SetTranspose} />
   </div>
 
 const DisplayChord = ({ c, pulse = false, active = false }) =>
@@ -42,10 +67,24 @@ const DisplayChord = ({ c, pulse = false, active = false }) =>
     {c}
   </Paper>
 
-const Layout = ({ match, song, player, PlayerStatusChanged, MoveChordTo, MountYTPlayer, UnMountYTPlayer }) =>
+const Layout = ({
+  match,
+  song,
+  player,
+  PlayerStatusChanged,
+  MoveChordTo,
+  MountYTPlayer,
+  UnMountYTPlayer,
+  SetTranspose
+}) =>
   <div>
     <DisplayTitle title={song.title} subtitle={song.subtitle} />
-    <DisplayControl status={player.status} PlayerStatusChanged={PlayerStatusChanged} />
+    <DisplayControl
+      status={player.status}
+      PlayerStatusChanged={PlayerStatusChanged}
+      transpose={player.transpose}
+      SetTranspose={SetTranspose}
+    />
     <div className={'chordscontainer'}>
       {Object.keys(song.chords).map(key =>
         <DisplayChord
@@ -56,7 +95,7 @@ const Layout = ({ match, song, player, PlayerStatusChanged, MoveChordTo, MountYT
         />
       )}
     </div>
-    <YTPlayer MountYTPlayer={MountYTPlayer} UnMountYTPlayer={UnMountYTPlayer} ytid={player.ytid} />
+    {/*<YTPlayer MountYTPlayer={MountYTPlayer} UnMountYTPlayer={UnMountYTPlayer} ytid={player.ytid} />*/}
   </div>
 
 class PlayerLayout extends Component {

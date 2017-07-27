@@ -25,3 +25,5 @@ yarn-error.log*
 
 # Build CSS
 client/src/**/*.css
+
+server/db.js

@@ -1,3 +1,9 @@
+.player-control {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    align-items: center;
+}
 
 .chordscontainer {
     margin: 1rem;
@@ -27,7 +33,6 @@
     0% {
         @include mdc-elevation(2);
     }
-
     100% {
         @include mdc-elevation(12);
     }

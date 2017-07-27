@@ -7,7 +7,8 @@
     "nodemon": "^1.11.0"
   },
   "dependencies": {
-    "express": "^4.15.3"
+    "express": "^4.15.3",
+    "mongoose": "^4.11.4"
   },
   "scripts": {
     "start": "concurrently -k -r \"yarn run server\" \"yarn run client\"",

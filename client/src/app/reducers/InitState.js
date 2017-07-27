@@ -16,7 +16,8 @@ export default {
     id:'',
     status: -1,
     activechord: 1,
-    ytid: ''
+    ytid: '',
+    transpose: 0
   },
   songs: {
     IarsrX60bZw: {

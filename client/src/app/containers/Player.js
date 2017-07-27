@@ -1,6 +1,6 @@
 import PlayerLayout from '../components/PlayerLayout'
 import { SelectedSong } from '../selectors'
-import { PlayerStatusChanged, GetSong, MoveChordTo, MountYTPlayer, UnMountYTPlayer } from '../actions'
+import { PlayerStatusChanged, GetSong, MoveChordTo, MountYTPlayer, UnMountYTPlayer, SetTranspose } from '../actions'
 import { withRouter } from 'react-router-dom'
 import { connect } from 'react-redux'
 
@@ -16,7 +16,8 @@ const mapDispatchToProps = dispatch => {
     GetSong: id => dispatch(GetSong(id)),
     MoveChordTo: id => dispatch(MoveChordTo(id)),
     MountYTPlayer: (id, ytid) => dispatch(MountYTPlayer(id, ytid)),
-    UnMountYTPlayer: id => dispatch(UnMountYTPlayer(id))
+    UnMountYTPlayer: id => dispatch(UnMountYTPlayer(id)),
+    SetTranspose: n => dispatch(SetTranspose(n))
   }
 }
 

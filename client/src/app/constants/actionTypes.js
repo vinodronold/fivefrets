@@ -1,6 +1,7 @@
 export const TOGGLE_DRAWER = 'TOGGLE_DRAWER'
 export const TOGGLE_MORE_OPTIONS = 'TOGGLE_MORE_OPTIONS'
 export const UPDATE_HEADER = 'UPDATE_HEADER'
+export const SET_TRANSPOSE = 'SET_TRANSPOSE'
 export const GET_SONG = 'GET_SONG'
 export const MOVE_CHORD_TO = 'MOVE_CHORD_TO'
 
