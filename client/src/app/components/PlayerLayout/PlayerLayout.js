@@ -3,12 +3,22 @@ import React, { Component } from 'react'
 import cx from 'classnames'
 import Button from '../Button'
 import Paper from '../Paper'
-// import YTPlayer from '../YTPlayer'
+import { Mobile } from '../Utils'
+import YTPlayer from '../YTPlayer'
 import Loader from '../Loader'
 import { Headline, SubHeading1 } from '../Typography'
 import { PLAYER_STATUS } from '../../constants'
 
 const IsPlaying = status => status === PLAYER_STATUS.PLAYING
+const GetTopPosition = c => {
+  let itemsPerLine = Mobile ? 4 : 8
+  let topRem = 4
+  if (c <= (itemsPerLine * 2)) {
+    return 0
+  }
+  return topRem * Math.floor((c - 1) / itemsPerLine) - topRem
+  
+}
 
 const DisplayTitle = ({ title = '', subtitle = '' }) =>
   <div style={{ margin: '1rem', textAlign: 'center' }}>
@@ -45,7 +55,7 @@ const DisplayTranspose = ({ transpose = 0, SetTranspose }) =>
   </span>
 
 const DisplayControl = ({ status, PlayerStatusChanged, transpose, SetTranspose }) =>
-  <div className="player-control">
+  <div className="player-control" style={{ margin: '1rem' }}>
     <Button
       primary
       compact
@@ -85,17 +95,27 @@ const Layout = ({
       transpose={player.transpose}
       SetTranspose={SetTranspose}
     />
-    <div className={'chordscontainer'}>
-      {Object.keys(song.chords).map(key =>
-        <DisplayChord
-          key={key}
-          {...song.chords[key]}
-          active={IsPlaying(player.status) && Number(key) === Number(player.activechord)}
-          pulse={!IsPlaying(player.status) && Number(key) === Number(player.activechord)}
-        />
-      )}
+    <div
+      style={{
+        display: 'flex',
+        justifyContent: 'center',
+        position: 'relative',
+        overflow: 'hidden',
+        minHeight: '12rem'
+      }}>
+      <div className={'chordscontainer'} style={{ top: `-${GetTopPosition(player.activechord)}rem` }}>
+        {Object.keys(song.chords).map(key =>
+          <DisplayChord
+            key={key}
+            {...song.chords[key]}
+            active={IsPlaying(player.status) && Number(key) === Number(player.activechord)}
+            pulse={!IsPlaying(player.status) && Number(key) === Number(player.activechord)}
+          />
+        )}
+      </div>
     </div>
-    {/*<YTPlayer MountYTPlayer={MountYTPlayer} UnMountYTPlayer={UnMountYTPlayer} ytid={player.ytid} />*/}
+
+    <YTPlayer MountYTPlayer={MountYTPlayer} UnMountYTPlayer={UnMountYTPlayer} ytid={player.ytid} />
   </div>
 
 class PlayerLayout extends Component {

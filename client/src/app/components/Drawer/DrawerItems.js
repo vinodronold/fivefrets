@@ -1,14 +1,14 @@
 import React from 'react'
-import List, { ListItem, ListItemStart } from '../List'
-import { clsTempDrawer } from '../../constants/ui'
+import List, { ListItem } from '../List'
+// import { clsTempDrawer } from '../../constants/ui'
 
-const DrawerItem = ({ id, icon, label }) =>
-  <ListItem href={'#'} className={id === 1 ? `${clsTempDrawer}--selected` : ''}>
-    <ListItemStart icon={icon} />{label}
+const DrawerItem = ({ id, label }) =>
+  <ListItem href={'#'} >
+    {label}
   </ListItem>
 
 const DrawerItems = ({ items }) =>
-  <List href>
+  <List href style={{textAlign: 'center'}}>
     {items.map(i => <DrawerItem key={i.id} {...i} />)}
   </List>
 
