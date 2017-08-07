@@ -1,9 +1,11 @@
 .YTClearSpace {
-    margin: 12rem;
+    min-height: 12rem;
 }
 
 .YTPlayer {
     position: fixed;
-    bottom: 0.5rem;
-    left: 0.5rem;
+    transform: scale(.75);
+    transform-origin: bottom left;
+    bottom: .5rem;
+    left: .5rem;
 }

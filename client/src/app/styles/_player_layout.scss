@@ -7,7 +7,10 @@
 .chordscontainer {
     padding: .5rem;
     position: absolute;
-    width: 98%;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
     display: grid;
     transition: top .5s;
     @media only screen and (max-width: $mobile) {
@@ -31,6 +34,7 @@
         background-color: #b2dfdb;
     }
 }
+
 @keyframes chordPulse {
     0% {
         @include mdc-elevation(2);
@@ -39,31 +43,3 @@
         @include mdc-elevation(12);
     }
 }
-
-
-// .chordscontainer {
-//     padding: .5rem;
-//     max-height: 11rem;
-//     overflow: hidden;
-//     display: grid;
-//     @media only screen and (max-width: $mobile) {
-//         grid-template-columns: repeat(5, 1fr);
-//     }
-//     @media only screen and (min-width: $mobile) {
-//         grid-template-columns: repeat(9, 1fr);
-//     }
-//     grid-gap: 1rem;
-//     .chords {
-//         padding:1rem;
-//         line-height: 1rem;
-//         border-radius: 5;
-//         text-align: center;
-//     }
-//     .pulse {
-//         background-color: #e0f2f1;
-//         animation: chordPulse .5s ease-out alternate infinite;
-//     }
-//     .active {
-//         background-color: #b2dfdb;
-//     }
-// }

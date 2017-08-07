@@ -98,7 +98,7 @@ const Layout = ({
     <div
       style={{
         display: 'flex',
-        justifyContent: 'center',
+        justifyContent: 'space-between',
         position: 'relative',
         overflow: 'hidden',
         minHeight: '12rem'
