@@ -1,6 +1,8 @@
-const mob = 768
-const tab = 992
+import { PLAYER_STATUS } from '../../constants'
+import {mobile} from '../../constants/theme'
+
 // const Mobile = navigator.userAgent.match(/(Android|iPhone|Windows Phone|MeeGo|BB10)/i) ? true : false
-const Mobile = window.innerWidth <= mob
+const Mobile = window.innerWidth <= mobile
 const YTImg = id => `https://i.ytimg.com/vi/${id}/default.jpg`
-export { mob, tab, Mobile, YTImg }
+const IsPlaying = status => status === PLAYER_STATUS.PLAYING
+export { Mobile, YTImg, IsPlaying }

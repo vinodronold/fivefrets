@@ -1,17 +1,10 @@
-import React from 'react'
-import cx from 'classnames'
-import { clsList } from '../../constants/ui'
-
-const List = ({ avatar, children, className, href, twoline, role, ...rest }) => {
-  let _props = {}
-  _props.className = cx(className, clsList, { [`${clsList}--avatar-list`]: avatar, [`${clsList}--two-line`]: twoline })
-  if (role) {
-    _props.role = role
-  }
-  if (href) {
-    return <div {..._props} {...rest}>{children}</div>
-  }
-  return <ul {..._props} {...rest}>{children}</ul>
-}
+import glamorous from 'glamorous'
+const List = glamorous.div({
+  margin:0,
+  padding: '.5rem 1rem',
+  letterSpacing: '0.04rem',
+  lineHeight: '1.5rem',
+  listStyleType: 'none'
+})
 
 export default List

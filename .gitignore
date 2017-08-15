@@ -27,3 +27,4 @@ yarn-error.log*
 client/src/**/*.css
 
 server/db.js
+*.png

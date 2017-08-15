@@ -1,21 +1,22 @@
-import React from 'react'
+import glamorous from 'glamorous'
+import Elevation from '../Paper/Elevation'
 import { Link } from 'react-router-dom'
-import { clsList } from '../../constants/ui'
 
-const ListItem = ({ className, children, href, role, tabIndex, ...rest }) => {
-  let _props = {}
-  _props.className = `${className} ${clsList}-item`
-  if (role) {
-    _props.role = role
-  }
-  if (tabIndex) {
-    _props.tabIndex = tabIndex
-  }
-  _props = { ..._props, ...rest }
-  if (href) {
-    return <Link to={href} {..._props}>{children}</Link>
-  }
-  return <li {..._props}>{children}</li>
-}
+const ListItem = glamorous(Link)(
+  {
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'flex-start',
+    color: 'inherit',
+    textDecoration: 'none',
+    height: 'auto',
+    padding: '1rem',
+    margin: '1rem',
+    cursor: 'pointer',
+    ':hover': Elevation(8),
+    ':active': Elevation(4)
+  },
+  Elevation(2)
+)
 
 export default ListItem

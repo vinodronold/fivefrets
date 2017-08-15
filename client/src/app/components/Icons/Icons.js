@@ -1,18 +1,33 @@
 import React from 'react'
+// import glamorous from 'glamorous'
 
-const Icon = size => path => ({ className, onClick }) =>
+// const SVGIcon = glamorous.svg(
+//   {
+//     viewbox: '0 0 24 24',
+//     margin: 'auto',
+//     position: 'relative',
+//     width: 'auto'
+//   },
+//   props => ({
+//     height: props.height || '24',
+//     shapeRendering: props.shapeRendering || 'auto',
+//     fill: props.fill || 'currentcolor'
+//   })
+// )
+
+const SVGIcon = ({ children, fill = 'currentcolor', height = '24', shapeRendering = 'auto', style, ...rest }) =>
   <svg
-    xmlns="http://www.w3.org/2000/svg"
-    width={size}
-    height={size}
-    viewBox={`0 0 ${size} ${size}`}
-    className={`${className} icon`}
-    onClick={onClick}>
-    <path d={path} />
+    viewBox="0 0 24 24"
+    fill={fill}
+    style={{
+      position: 'relative',
+      height: height,
+      width: height,
+      shapeRendering: shapeRendering,
+      ...style
+    }}
+    {...rest}>
+    {children}
   </svg>
 
-const Icon24 = Icon('24')
-const Icon36 = Icon('36')
-
-export default Icon
-export { Icon24, Icon36 }
+export default SVGIcon

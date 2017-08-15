@@ -1,23 +1,34 @@
 import React from 'react'
-import List, { ListItem, ListItemStart, ListItemText, ListItemTextSecondary } from '../List'
+import glamorous from 'glamorous'
+import List, { ListItem, ListItemText, ListItemTextSecondary } from '../List'
 import { Mobile, YTImg } from '../Utils'
+
+const SongImg = glamorous.img({
+  marginLeft: 0,
+  marginRight: '2rem',
+  height: 'auto',
+  width: 'auto'
+})
 
 const Song = ({ id, title, subtitle, GetSong }) =>
   <ListItem
-    href={`/play/${id}`}
-    className={'chord-list-item'}
+    to={`/play/${id}`}
     onClick={() => {
       GetSong(id)
     }}>
-    {!Mobile && <ListItemStart className={'chord-list-item-img'} img={YTImg(id)} />}
+    {!Mobile && <SongImg src={YTImg(id)} />}
     <ListItemText>
       {title}
-      {subtitle ? <ListItemTextSecondary>{subtitle}</ListItemTextSecondary> : ''}
+      {subtitle
+        ? <ListItemTextSecondary>
+            {subtitle}
+          </ListItemTextSecondary>
+        : ''}
     </ListItemText>
   </ListItem>
 
 const SongsList = ({ songs = [], GetSong }) =>
-  <List href twoline className={'chord-list'}>
+  <List>
     {Object.keys(songs).map(key =>
       <Song key={key} id={key} GetSong={GetSong} title={songs[key].title} subtitle={songs[key].subtitle} />
     )}

@@ -1,7 +1,8 @@
-import React from 'react'
-import { clsList } from '../../constants/ui'
-
-const ListItemTextSecondary = ({ className, children }) =>
-  <span className={`${className} ${clsList}-item__text__secondary`}>{children}</span>
-
-export default ListItemTextSecondary
+import glamorous from 'glamorous'
+export default glamorous.span({
+  fontSize: '0.875rem',
+  fontWeight: 400,
+  letterSpacing: '0.04rem',
+  lineHeight: '1.25rem',
+  color: 'rgba(0, 0, 0, 0.54)'
+})
