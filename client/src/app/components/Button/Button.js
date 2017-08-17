@@ -7,19 +7,18 @@ const Button = glamorous.button(
     padding: '.5rem 1rem',
     margin: '0rem .25rem',
     letterSpacing: '.2rem',
-    lineHeight: '1rem',
-    maxHeight: '2rem',
-    fontWeight: 500,
+    lineHeight: '0.938rem',
+    height: '2.5rem',
+    background: 'transparent',
     transition: 'all .5s'
   },
-  ({ theme }) => ({
-    fontFamily: theme.fontFamily,
-    background: theme.color.bg,
-    color: theme.color.primary,
-    border: `solid .1rem ${theme.color.bg}`,
+  ({ theme, disabled, onDark }) => ({
+    color: !disabled && (onDark ? theme.color.bg : theme.color.primary),
+    border: onDark ? 'none' : `solid .1rem ${theme.color.bg}`,
     ':hover': {
-      color: theme.color.accent,
-      border: `solid .1rem ${theme.color.compliment}`
+      color: !disabled && theme.color.accent,
+      border: !disabled && (onDark ? 'none' : `solid .1rem ${theme.color.compliment}`),
+      cursor: disabled && 'not-allowed'
     }
   })
 )

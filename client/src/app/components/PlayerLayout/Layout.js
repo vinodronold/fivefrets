@@ -38,9 +38,11 @@ const Layout = ({
           <Chord
             key={key}
             active={IsPlaying(player.status) && Number(key) === Number(player.activechord)}
-            pulse={!IsPlaying(player.status) && Number(key) === Number(player.activechord)}>
-            {song.chords[key].c}
-          </Chord>
+            pulse={!IsPlaying(player.status) && Number(key) === Number(player.activechord)}
+            r={song.chords[key].r}
+            q={song.chords[key].q}
+            x={player.transpose}
+          />
         )}
       </ChordsWindow>
     </ChordsContainer>

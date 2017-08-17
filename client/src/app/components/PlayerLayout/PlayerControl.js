@@ -2,7 +2,6 @@ import React from 'react'
 import glamorous from 'glamorous'
 import Button from '../Button'
 import { Plus, Minus } from '../Icons'
-import { SubHeading1 } from '../Typography'
 import { PLAYER_STATUS } from '../../constants'
 import { IsPlaying } from '../Utils'
 
@@ -24,22 +23,27 @@ const PlayerControl = ({ status, PlayerStatusChanged, transpose, SetTranspose })
       }>
       {IsPlaying(status) ? 'PAUSE' : 'PLAY'}
     </Button>
-    <Button onClick={() => PlayerStatusChanged(PLAYER_STATUS.ENDED)}>STOP</Button>
-    <Button
-      onClick={() => {
-        SetTranspose(-1)
-      }}>
-      <Minus height={'1rem'} />
-    </Button>
-    <SubHeading1 style={{ display: 'inline', margin: '.25rem' }}>
-      TRANSPOSE {transpose}
-    </SubHeading1>
-    <Button
-      onClick={() => {
-        SetTranspose(1)
-      }}>
-      <Plus height={'1rem'} />
-    </Button>
+    <Button disabled={!IsPlaying(status)} onClick={() => PlayerStatusChanged(PLAYER_STATUS.ENDED)}>STOP</Button>
+    <div>
+      <Button
+        onClick={() => {
+          SetTranspose(-1)
+        }}>
+        <Minus height={'1rem'} />
+      </Button>
+      <Button
+        onClick={() => {
+          SetTranspose(-1 * transpose)
+        }}>
+        TRANSPOSE {transpose}
+      </Button>
+      <Button
+        onClick={() => {
+          SetTranspose(1)
+        }}>
+        <Plus height={'1rem'} />
+      </Button>
+    </div>
   </ControlContainer>
 
 export default PlayerControl

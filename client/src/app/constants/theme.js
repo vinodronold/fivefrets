@@ -9,7 +9,7 @@ const theme = {
     bg: `#FFF`
   },
   BaseFont: '16px',
-  fontFamily: `Roboto, Helvetica, Arial, sans-serif`,
+  fontFamily: `Helvetica, Arial, sans-serif`,
   media: {
     mobile: `@media only screen and (max-width: ${mobile}px)`
   }

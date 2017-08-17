@@ -1,5 +1,6 @@
 import React from 'react'
 import glamorous from 'glamorous'
+import Button from '../Button'
 
 const Header = glamorous.div(
   {
@@ -19,8 +20,16 @@ const Brand = glamorous.span({
   letterSpacing: '.75rem',
   fontFeatureSettings: `"liga" 0`
 })
+const Controls = glamorous.span({
+  marginLeft: 'auto'
+})
 
 export default () =>
   <Header>
     <Brand>fivefrets</Brand>
+    <Controls>
+      <Button onDark>Home</Button>
+      <Button onDark>Browse</Button>
+      <Button onDark>Login</Button>
+    </Controls>
   </Header>

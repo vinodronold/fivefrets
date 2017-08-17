@@ -2,6 +2,7 @@ import glamorous from 'glamorous'
 import { css } from 'glamor'
 import Paper from '../Paper'
 import Elevation from '../Paper/Elevation'
+import chordName from '../../constants/chordName'
 
 const ChordsContainer = glamorous.div({
   position: 'relative',
@@ -40,7 +41,10 @@ const Chord = glamorous(Paper)(
     lineHeight: '1rem',
     textAlign: 'center'
   },
-  ({ active, pulse, theme }) => ({
+  ({ active, pulse, theme, r, q, x }) => ({
+    ':after': {
+      content: chordName(r, q, x)
+    },
     backgroundColor: active || pulse ? theme.color.secondary : theme.color.bg,
     animation: pulse ? `${bounce} 0.5s infinite ease-out alternate` : ''
   })
