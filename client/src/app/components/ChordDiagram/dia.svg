@@ -1,0 +1,23 @@
+<svg 
+    xmlns="http://www.w3.org/2000/svg" width="200" height="250">
+    <path fill="#fff" d="M-1-1h202v252H-1z"/>
+    <g stroke="#000">
+        <path fill="#fff" stroke-width="1.5" d="M25 25h150v200H25z"/>
+        <path fill="none" stroke-opacity="null" stroke-width="1.5" d="M26 75h150M26 125h150M26 175h150M56 26v199M86 26v199m30-199v199m30-199v199" stroke-linejoin="null" stroke-linecap="null"/>
+        <text x="89.5" y="18" fill-opacity="null" stroke-opacity="null" stroke-width="0" font-size="16" font-family="Helvetica, Arial, sans-serif">Am</text>
+        <text x="9.5" y="50" fill-opacity="null" stroke-opacity="null" stroke-width="0" font-size="12" font-family="Helvetica, Arial, sans-serif">1</text>
+        <text x="9.5" y="100" fill-opacity="null" stroke-opacity="null" stroke-width="0" font-size="12" font-family="Helvetica, Arial, sans-serif">2</text>
+        <text x="9.5" y="150" fill-opacity="null" stroke-opacity="null" stroke-width="0" font-size="12" font-family="Helvetica, Arial, sans-serif">3</text>
+        <text x="9.5" y="200" fill-opacity="null" stroke-opacity="null" stroke-width="0" font-size="12" font-family="Helvetica, Arial, sans-serif">4</text>
+        <text x="171.5" y="240" fill-opacity="null" stroke-opacity="null" stroke-width="0" font-size="12" font-family="Helvetica, Arial, sans-serif">1</text>
+        <text x="143.5" y="240" fill-opacity="null" stroke-opacity="null" stroke-width="0" font-size="12" font-family="Helvetica, Arial, sans-serif">2</text>
+        <text x="112.5" y="240" fill-opacity="null" stroke-opacity="null" stroke-width="0" font-size="12" font-family="Helvetica, Arial, sans-serif">3</text>
+        <text x="82.5" y="240" fill-opacity="null" stroke-opacity="null" stroke-width="0" font-size="12" font-family="Helvetica, Arial, sans-serif">4</text>
+        <text x="53.5" y="240" fill-opacity="null" stroke-opacity="null" stroke-width="0" font-size="12" font-family="Helvetica, Arial, sans-serif">5</text>
+        <text x="23.5" y="240" fill-opacity="null" stroke-opacity="null" stroke-width="0" font-size="12" font-family="Helvetica, Arial, sans-serif">6</text>
+        <ellipse cx="86.5" cy="100" fill-opacity="null" stroke-opacity="null" stroke-width="1.5" rx="5" ry="5"/>
+        <ellipse cx="116.5" cy="100" stroke-opacity="null" stroke-width="1.5" rx="5" ry="5"/>
+        <ellipse cx="146.5" cy="50" stroke-opacity="null" stroke-width="1.5" rx="5" ry="5"/>
+        <ellipse cx="101" cy="149.5" stroke-width="1.5" ry="3" rx="80"/>
+    </g>
+</svg>

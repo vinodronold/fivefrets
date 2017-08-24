@@ -3,6 +3,7 @@ import { Mobile, IsPlaying } from '../Utils'
 import { ChordsContainer, ChordsWindow, Chord } from './Chord'
 import PlayerTitle from './PlayerTitle'
 import PlayerControl from './PlayerControl'
+import ChordDiagram from '../ChordDiagram'
 import YTPlayer from '../YTPlayer'
 
 const GetTopPosition = c => {
@@ -46,6 +47,7 @@ const Layout = ({
         )}
       </ChordsWindow>
     </ChordsContainer>
+    <ChordDiagram diagram={song.diagram} x={player.transpose} />
     <YTPlayer MountYTPlayer={MountYTPlayer} UnMountYTPlayer={UnMountYTPlayer} ytid={player.ytid} />
   </div>
 

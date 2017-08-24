@@ -1,48 +1,34 @@
-import React, { PureComponent } from 'react'
-import Icon from '../Icons'
-import { clsMenuAnchor, clsMenu } from '../../constants/ui'
-import List, { ListItem } from '../List'
-import { MDCSimpleMenu } from '@material/menu/dist/mdc.menu'
+import React from 'react'
+import glamorous from 'glamorous'
+import Elevation from '../Paper/Elevation'
+import Button from '../Button'
+import { BGColor, height } from '../Toolbar/'
 
-class Menu extends PureComponent {
-  constructor(props) {
-    super(props)
-    this.node = null
-    this.menu = null
-  }
-  shouldComponentUpdate = nextProps => nextProps.isOptionsOpen
-  componentDidMount() {
-    this.menu = new MDCSimpleMenu(this.node)
-    this.menu.hide()
-    this.node.addEventListener('MDCSimpleMenu:cancel', () => {
-      this.props.toggleMoreOptions()
-    })
-  }
-  componentDidUpdate() {
-    if (this.props.isOptionsOpen) {
-      this.menu.show()
-    }
-  }
-  componentWillUnmount() {
-    this.menu.destroy()
-  }
+const Menu = glamorous.div(
+  {
+    display: 'flex',
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    right: 0,
+    padding: `${height + 2}rem 1rem 1rem`,
+    alignItems: 'center',
+    margin: '0 .25rem',
+    textAlign: 'center',
+    flexDirection: 'column',
+    zIndex: 9,
+    transition: 'all .5s'
+  },
+  BGColor,
+  Elevation(2),
+  ({ isMenuOpen }) => ({
+    transform: `translateY(${isMenuOpen ? '0' : '-10rem'})`
+  })
+)
 
-  render() {
-    const { i, opts, toggleMoreOptions } = this.props
-    return (
-      <div className={clsMenuAnchor}>
-        <Icon i={i} onClick={toggleMoreOptions} />
-        <div
-          className={`${clsMenu} ${clsMenu}--open-from-top-right`}
-          style={{ right: 0, top: 0 }}
-          ref={n => (this.node = n)}>
-          <List className={`${clsMenu}__items`} role="menu">
-            {opts.map(l => <ListItem key={l.label} role="menuitem" tabIndex="0">{l.label}</ListItem>)}
-          </List>
-        </div>
-      </div>
-    )
-  }
-}
-
-export default Menu
+export default ({ isMenuOpen }) =>
+  <Menu isMenuOpen={isMenuOpen}>
+    <Button onDark>Home</Button>
+    <Button onDark>Browse</Button>
+    <Button onDark>Login</Button>
+  </Menu>

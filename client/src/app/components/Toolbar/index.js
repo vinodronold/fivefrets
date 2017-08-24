@@ -1,3 +1,4 @@
-import Toolbar from './Toolbar'
+import Toolbar, { BGColor, height } from './Toolbar'
 
 export default Toolbar
+export { BGColor, height }

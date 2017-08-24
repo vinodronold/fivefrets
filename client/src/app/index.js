@@ -4,7 +4,8 @@ import { Provider } from 'react-redux'
 import { ThemeProvider } from 'glamorous'
 import theme from './constants/theme'
 import { BrowserRouter as Router } from 'react-router-dom'
-import Header from './components/Header'
+import MenuBar from './containers/MenuBar'
+import Header from './containers/Header'
 import Routes from './Routes'
 import store from './store'
 
@@ -25,6 +26,7 @@ const App = () =>
     <ThemeProvider theme={theme}>
       <Router>
         <div>
+          <MenuBar />
           <Header />
           <Routes />
         </div>

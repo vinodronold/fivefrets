@@ -1,5 +1,4 @@
-import ToggleDrawer from './ToggleDrawer'
-import ToggleMoreOptions from './ToggleMoreOptions'
+import ToggleMenu from './ToggleMenu'
 import PlayerStatusChanged from './PlayerStatusChanged'
 import GetSong from './GetSong'
 import MoveChordTo from './MoveChordTo'
@@ -8,8 +7,7 @@ import UnMountYTPlayer from './UnMountYTPlayer'
 import SetTranspose from './SetTranspose'
 
 export {
-  ToggleDrawer,
-  ToggleMoreOptions,
+  ToggleMenu,
   PlayerStatusChanged,
   GetSong,
   MoveChordTo,

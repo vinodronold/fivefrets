@@ -1,16 +1,13 @@
 import Toolbar from '../components/Toolbar'
 import { connect } from 'react-redux'
-import { ToggleDrawer, ToggleMoreOptions } from '../actions'
+import { ToggleMenu } from '../actions'
 
 const mapStateToProps = state => ({
   ...state.toolbar
 })
 const mapDispatchToProps = dispatch => ({
-  toggleDrawer: () => {
-    dispatch(ToggleDrawer)
-  },
-  toggleMoreOptions: () => {
-    dispatch(ToggleMoreOptions)
+  ToggleMenu: () => {
+    dispatch(ToggleMenu)
   }
 })
 

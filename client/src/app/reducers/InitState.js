@@ -1,16 +1,6 @@
 export default {
   toolbar: {
-    isDrawerOpen: false,
-    isOptionsOpen: false,
-    btns: [],
-    opts: [
-      {
-        label: 'Test',
-        OnClick: () => {
-          console.log('Option Clicked!!')
-        }
-      }
-    ]
+    isMenuOpen: false
   },
   player: {
     id: '',
@@ -23,6 +13,32 @@ export default {
     IarsrX60bZw: {
       title: 'Thalli Pogathey',
       subtitle: 'subtitle',
+      diagram: [
+        { r: 1, q: 1 },
+        { r: 1, q: 2 },
+        { r: 2, q: 1 },
+        { r: 2, q: 2 },
+        { r: 3, q: 1 },
+        { r: 3, q: 2 },
+        { r: 4, q: 1 },
+        { r: 4, q: 2 },
+        { r: 5, q: 1 },
+        { r: 5, q: 2 },
+        { r: 6, q: 1 },
+        { r: 6, q: 2 },
+        { r: 7, q: 1 },
+        { r: 7, q: 2 },
+        { r: 8, q: 1 },
+        { r: 8, q: 2 },
+        { r: 9, q: 1 },
+        { r: 9, q: 2 },
+        { r: 10, q: 1 },
+        { r: 10, q: 2 },
+        { r: 11, q: 1 },
+        { r: 11, q: 2 },
+        { r: 12, q: 1 },
+        { r: 12, q: 2 }
+      ],
       chords: {
         1: { r: 1, q: 2, t: 1 },
         2: { r: 3, t: 2 },

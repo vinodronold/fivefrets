@@ -1,36 +1,54 @@
 import React from 'react'
-import { clsToolbar, clsTheme } from '../../constants/ui'
-import Icon from '../Icons'
-import Menu from '../Menu'
+import glamorous from 'glamorous'
+import Elevation from '../Paper/Elevation'
 import Button from '../Button'
 
-const ToolbarButton = ({ label, onClick }) =>
-  <Button className={`${clsTheme}--text-primary-on-primary`} onClick={onClick}>
-    {label}
-  </Button>
+const BGColor = ({ theme }) => ({
+  backgroundColor: theme.color.primary,
+  color: theme.color.bg
+})
+const height = 3
 
-const ToolbarLeft = ({ toggleDrawer }) =>
-  <section
-    className={`${clsToolbar}__section ${clsToolbar}__section--align-start ${clsToolbar}__section--shrink-to-fit`}>
-    <Icon i={'menu'} onClick={toggleDrawer} />
-  </section>
+const Header = glamorous.div(
+  {
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    right: 0,
+    display: 'flex',
+    alignItems: 'center',
+    padding: '.5rem',
+    textAlign: 'center',
+    height: `${height}rem`,
+    zIndex: 10,
+    transition: 'all .5s'
+  },
+  BGColor,
+  ({ isMenuOpen }) => isMenuOpen && Elevation(8)
+)
+const Brand = glamorous.span({
+  fontSize: '1.25rem',
+  letterSpacing: '.75rem',
+  fontFeatureSettings: `"liga" 0`
+})
+const Controls = glamorous.span({
+  marginLeft: 'auto'
+})
+const HeaderClearFix = glamorous.div({
+  height: `${height}rem`
+})
 
-const ToolbarRight = ({ isOptionsOpen, btns, opts, toggleMoreOptions }) =>
-  <section className={`${clsToolbar}__section ${clsToolbar}__section--align-end`}>
-    {btns.map(b => <ToolbarButton key={b.label} {...b} />)}
-    {opts && <Menu i={'more_vert'} isOptionsOpen={isOptionsOpen} opts={opts} toggleMoreOptions={toggleMoreOptions} />}
-  </section>
-
-const Toolbar = ({ isOptionsOpen, btns, opts, toggleDrawer, toggleMoreOptions }) =>
+export default ({ isMenuOpen, ToggleMenu }) =>
   <div>
-    <header className={`${clsToolbar} ${clsToolbar}--fixed`}>
-      <div className={`${clsToolbar}__row`}>
-        <ToolbarLeft toggleDrawer={toggleDrawer} />
-        <ToolbarRight isOptionsOpen={isOptionsOpen} btns={btns} opts={opts} toggleMoreOptions={toggleMoreOptions} />
-      </div>
-    </header>
-    <div className={`${clsToolbar}-fixed-adjust`} />
-    <div style={{ padding: 10 }} />
+    <Header isMenuOpen={isMenuOpen}>
+      <Brand>fivefrets</Brand>
+      <Controls>
+        <Button onDark onClick={ToggleMenu}>
+          MENU
+        </Button>
+      </Controls>
+    </Header>
+    <HeaderClearFix />
   </div>
-  
-export default Toolbar
+
+export { BGColor, height }
